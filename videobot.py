@@ -92,18 +92,26 @@ def code_for(p, lang, today=None):
                 ends_label=(f"Through {end.strftime('%b')} {end.day}" if lang == "en" else f"Hasta el {end.day} de {months_es[end.month-1]}"))
 
 # ---------------------------------------------------------------- rotation
+_ORDERS = {}
 def _order(n, cycle):
-    def shuf(c, t=0):
-        o = list(range(n)); random.Random(f"shatter-{c}-{t}").shuffle(o); return o
-    if cycle == 0: return shuf(0)
-    prev = _order(n, cycle - 1); gap = min(6, n // 3)
-    for t in range(200):
-        o = shuf(cycle, t)
-        if not set(o[:gap]) & set(prev[-gap:]): return o
-    return shuf(cycle)
+    """Shuffled product order for each round. A product that ended one round cannot show up in the first half of the next,
+    so it never comes back sooner than about half a catalog later."""
+    g = n // 2
+    for c in range(cycle + 1):
+        if (n, c) in _ORDERS: continue
+        rnd = random.Random(f"shatter-{c}")
+        if c == 0 or g == 0:
+            o = list(range(n)); rnd.shuffle(o)
+        else:
+            prev = _ORDERS[(n, c - 1)]
+            head = rnd.sample(prev[:n - g], g)             # first half comes only from products that opened last round
+            rest = [x for x in range(n) if x not in head]; rnd.shuffle(rest)
+            o = head + rest
+        _ORDERS[(n, c)] = o
+    return _ORDERS[(n, cycle)]
 
-def pick(products, day, slot):
-    n = len(products); k = day * POSTS_PER_DAY + slot
+def pick(products, day, slot, k=None):
+    n = len(products); k = day * POSTS_PER_DAY + slot if k is None else k
     cycle, pos = divmod(k, n)
     i = _order(n, cycle)[pos]
     return products[i], k + (i + cycle) % 2 - k % 2  # language flips each time a product comes back around
@@ -198,7 +206,8 @@ def main():
     else:
         now = dt.datetime.utcnow(); m = now.hour * 60 + now.minute
         slot = int(os.environ.get("SLOT", min(range(len(SLOT_MINUTES_UTC)), key=lambda i: abs(SLOT_MINUTES_UTC[i] - m)) % POSTS_PER_DAY))
-        p, k = pick(products, day, slot)
+        idx = os.environ.get("POST_INDEX")   # self running loop: one unique number per hour, so no product repeats back to back
+        p, k = pick(products, day, slot, int(idx) if idx else None)
     for lang in ([a.lang] if a.lang else langs_for(k)):
         mp4, cap = build(p, lang, k)
         print(f"\nProduct: {p['title']} [{lang}]\nVideo: {mp4}\n---\n{cap}\n---")
