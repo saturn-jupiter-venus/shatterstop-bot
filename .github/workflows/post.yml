@@ -1,15 +1,8 @@
 name: ShatterStop video bot
 on:
   schedule:
-    # 8 posts a day, every 90 minutes, 8:00 AM to 6:30 PM Eastern (UTC, daylight time)
-    - cron: "0 12 * * *"
-    - cron: "30 13 * * *"
-    - cron: "0 15 * * *"
-    - cron: "30 16 * * *"
-    - cron: "0 18 * * *"
-    - cron: "30 19 * * *"
-    - cron: "0 21 * * *"
-    - cron: "30 22 * * *"
+    # backup only: restarts the self running loop if it ever stops
+    - cron: "41 */2 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -17,10 +10,14 @@ on:
         default: "false"
 permissions:
   contents: write
+  actions: write
+concurrency:
+  group: shatterstop-loop
+  cancel-in-progress: false
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,39 +29,12 @@ jobs:
           [ -f ~/.fonts/SpaceGrotesk.ttf ] || curl -sSL -o ~/.fonts/SpaceGrotesk.ttf "https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf"
           fc-cache -f && (fc-list | grep -i grotesk || echo "font missing, using fallback")
           pip install -q -r requirements.txt
-      - name: Render
-        env:
-          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL || vars.MAKE_WEBHOOK_URL }}
-          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
-          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-        run: |
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then python videobot.py --dry-run; else python videobot.py; fi
-      - name: Hand the video to Make (posts to the ShatterStop Page)
+      - name: Dry run
+        if: github.event.inputs.dry_run == 'true'
+        run: python videobot.py --dry-run
+      - name: Posting loop
         if: github.event.inputs.dry_run != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL || vars.MAKE_WEBHOOK_URL }}
-        run: |
-          [ -z "$MAKE_WEBHOOK_URL" ] && { echo "No MAKE_WEBHOOK_URL set, skipping"; exit 0; }
-          gh release view videos >/dev/null 2>&1 || gh release create videos --title "Bot videos" --notes "Videos made by the ShatterStop bot"
-          for j in out/*.json; do
-            [ -e "$j" ] || continue
-            name="$(date -u +%Y%m%d%H%M)_$(python -c "import json;print(json.load(open('$j'))['name'])")"
-            cp "$(python -c "import json;print(json.load(open('$j'))['file'])")" "/tmp/$name"
-            gh release upload videos "/tmp/$name" --clobber
-            url="https://github.com/${{ github.repository }}/releases/download/videos/$name"
-            python - "$j" "$url" > /tmp/payload.json <<'PY'
-          import json, sys
-          d = json.load(open(sys.argv[1], encoding="utf-8")); d["video_url"] = sys.argv[2]; d.pop("file", None)
-          print(json.dumps(d))
-          PY
-            curl -sS --fail -X POST -H "Content-Type: application/json" --data @/tmp/payload.json "$MAKE_WEBHOOK_URL"; echo
-          done
-          # keep only the newest 40 videos in the release
-          gh release view videos --json assets -q '.assets | sort_by(.createdAt) | reverse | .[40:] | .[].name' | while read -r old; do gh release delete-asset videos "$old" -y; done
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: video
-          path: out/*.mp4
-          retention-days: 7
+        run: bash run_loop.sh
