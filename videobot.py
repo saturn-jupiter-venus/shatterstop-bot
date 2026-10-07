@@ -25,7 +25,9 @@ import requests
 HERE = os.path.dirname(os.path.abspath(__file__))
 STORE = os.environ.get("STORE_URL", "https://jdzpva-zd.myshopify.com").rstrip("/")
 GRAPH = "https://graph.facebook.com/v21.0"
-POSTS_PER_DAY = int(os.environ.get("POSTS_PER_DAY", "3"))
+# 8 posts a day, every 90 minutes from 8:00 AM to 6:30 PM Eastern (UTC times, daylight saving)
+SLOT_MINUTES_UTC = [720, 810, 900, 990, 1080, 1170, 1260, 1350]
+POSTS_PER_DAY = int(os.environ.get("POSTS_PER_DAY", str(len(SLOT_MINUTES_UTC))))
 OUT = os.path.join(HERE, "out")
 BRAND_SHORT = os.environ.get("BRAND_NAME", "AstraPoint")
 
@@ -90,11 +92,21 @@ def code_for(p, lang, today=None):
                 ends_label=(f"Through {end.strftime('%b')} {end.day}" if lang == "en" else f"Hasta el {end.day} de {months_es[end.month-1]}"))
 
 # ---------------------------------------------------------------- rotation
+def _order(n, cycle):
+    def shuf(c, t=0):
+        o = list(range(n)); random.Random(f"shatter-{c}-{t}").shuffle(o); return o
+    if cycle == 0: return shuf(0)
+    prev = _order(n, cycle - 1); gap = min(6, n // 3)
+    for t in range(200):
+        o = shuf(cycle, t)
+        if not set(o[:gap]) & set(prev[-gap:]): return o
+    return shuf(cycle)
+
 def pick(products, day, slot):
     n = len(products); k = day * POSTS_PER_DAY + slot
     cycle, pos = divmod(k, n)
-    order = list(range(n)); random.Random(f"shatter-{cycle}").shuffle(order)
-    return products[order[pos]], k
+    i = _order(n, cycle)[pos]
+    return products[i], k + (i + cycle) % 2 - k % 2  # language flips each time a product comes back around
 
 def langs_for(k):
     mode = os.environ.get("LANG_MODE", "alternate")
@@ -184,7 +196,8 @@ def main():
     if a.product:
         p = next(x for x in products if x["handle"] == a.product); k = 0
     else:
-        slot = int(os.environ.get("SLOT", min(POSTS_PER_DAY - 1, dt.datetime.utcnow().hour * POSTS_PER_DAY // 24)))
+        now = dt.datetime.utcnow(); m = now.hour * 60 + now.minute
+        slot = int(os.environ.get("SLOT", min(range(len(SLOT_MINUTES_UTC)), key=lambda i: abs(SLOT_MINUTES_UTC[i] - m)) % POSTS_PER_DAY))
         p, k = pick(products, day, slot)
     for lang in ([a.lang] if a.lang else langs_for(k)):
         mp4, cap = build(p, lang, k)
