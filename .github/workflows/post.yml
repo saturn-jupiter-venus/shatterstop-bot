@@ -1,10 +1,15 @@
 name: ShatterStop video bot
 on:
   schedule:
-    # 9 AM, 1 PM and 7 PM Eastern (13:00, 17:00, 23:00 UTC during daylight time)
-    - cron: "0 13 * * *"
-    - cron: "0 17 * * *"
-    - cron: "0 23 * * *"
+    # 8 posts a day, every 90 minutes, 8:00 AM to 6:30 PM Eastern (UTC, daylight time)
+    - cron: "0 12 * * *"
+    - cron: "30 13 * * *"
+    - cron: "0 15 * * *"
+    - cron: "30 16 * * *"
+    - cron: "0 18 * * *"
+    - cron: "30 19 * * *"
+    - cron: "0 21 * * *"
+    - cron: "30 22 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -27,10 +32,6 @@ jobs:
           [ -f ~/.fonts/SpaceGrotesk.ttf ] || curl -sSL -o ~/.fonts/SpaceGrotesk.ttf "https://github.com/google/fonts/raw/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf"
           fc-cache -f && (fc-list | grep -i grotesk || echo "font missing, using fallback")
           pip install -q -r requirements.txt
-      - name: Pick slot
-        run: |
-          H=$(date -u +%H)
-          if [ "$H" -lt 15 ]; then echo "SLOT=0" >> $GITHUB_ENV; elif [ "$H" -lt 21 ]; then echo "SLOT=1" >> $GITHUB_ENV; else echo "SLOT=2" >> $GITHUB_ENV; fi
       - name: Render
         env:
           MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL || vars.MAKE_WEBHOOK_URL }}
