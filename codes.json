@@ -1,0 +1,11 @@
+{
+  "3-channel-dash-cam-front-inside-rear-32gb-card-included": {
+    "code": "GVILLE10",
+    "off": 10,
+    "ends": "2026-10-31",
+    "spoken_en": "G Ville Ten",
+    "spoken_es": "G Ville Diez",
+    "active": false,
+    "note": "Set active to true ONLY after this code exists in Shopify. A code in a video that doesn't work at checkout loses the sale."
+  }
+}

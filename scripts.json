@@ -1,0 +1,82 @@
+{
+  "10-in-1-smart-watch-gift-set-with-wireless-earbuds-and-7-bands": {
+    "en": {"hook": "One box. Ten pieces. Gift handled.", "say": "A smartwatch, wireless earbuds and seven bands in one box. It tracks heart rate, sleep and activity.", "chips": ["WATCH + EARBUDS", "7 BANDS", "HEART RATE + SLEEP"]},
+    "es": {"hook": "Una caja. Diez piezas. Regalo resuelto.", "say": "Reloj inteligente, audífonos inalámbricos y siete correas en una caja. Mide el ritmo cardíaco, el sueño y la actividad.", "chips": ["RELOJ + AUDÍFONOS", "7 CORREAS", "RITMO + SUEÑO"]}
+  },
+  "flame-effect-aroma-diffuser-and-humidifier": {
+    "en": {"hook": "Fake fire. Real vibe.", "say": "A flame effect diffuser and humidifier. A few drops of oil and the whole room changes.", "chips": ["FLAME EFFECT", "AROMA DIFFUSER", "HUMIDIFIER"]},
+    "es": {"hook": "Fuego falso. Ambiente de verdad.", "say": "Difusor y humidificador con efecto de llama. Unas gotas de aceite y cambia todo el cuarto.", "chips": ["EFECTO DE LLAMA", "DIFUSOR", "HUMIDIFICADOR"]}
+  },
+  "heated-hair-straightener-brush-adjustable-heat": {
+    "en": {"hook": "Straight hair in one pass.", "say": "Straightener and brush in one. Heats up in about twenty seconds, five heat settings, and it shuts itself off after thirty minutes.", "chips": ["HEATS IN 20 SEC", "5 HEAT SETTINGS", "AUTO OFF"]},
+    "es": {"hook": "Pelo lacio en una pasada.", "say": "Plancha y cepillo en uno. Calienta en unos veinte segundos, tiene cinco temperaturas y se apaga sola a los treinta minutos.", "chips": ["CALIENTA EN 20 SEG", "5 TEMPERATURAS", "SE APAGA SOLA"]}
+  },
+  "cordless-electric-air-duster-150000-rpm-turbo-blower": {
+    "en": {"hook": "Stop buying cans of air.", "say": "A cordless air duster with a hundred fifty thousand RPM motor. Four speeds, a built in light, and it charges with USB C.", "chips": ["150,000 RPM", "4 SPEEDS", "LED + USB C"]},
+    "es": {"hook": "Deje de comprar latas de aire.", "say": "Soplador inalámbrico con motor de ciento cincuenta mil revoluciones. Cuatro velocidades, luz integrada y carga por USB C.", "chips": ["150,000 RPM", "4 VELOCIDADES", "LUZ + USB C"]}
+  },
+  "cordless-heated-neck-and-shoulder-massager-human-hand-feel": {
+    "en": {"hook": "Your neck has been carrying you all day.", "say": "A cordless neck massager with four kneading nodes, three intensities and two heat levels. Up to two hours per charge.", "chips": ["3 INTENSITIES", "2 HEAT LEVELS", "CORDLESS"]},
+    "es": {"hook": "Su cuello lo ha cargado todo el día.", "say": "Masajeador de cuello inalámbrico con cuatro nodos, tres intensidades y dos niveles de calor. Hasta dos horas por carga.", "chips": ["3 INTENSIDADES", "2 NIVELES DE CALOR", "INALÁMBRICO"]}
+  },
+  "3-channel-dash-cam-front-inside-rear-32gb-card-included": {
+    "en": {"hook": "Somebody's going to hit you on Woodruff Road. And they're going to say it was your fault.", "say": "Three cameras. Front, inside and rear. Parking monitor, and it locks the clip the second it feels a hit. Thirty two gig card in the box.", "chips": ["FRONT + INSIDE + REAR", "PARKING MONITOR", "32GB CARD INCLUDED"]},
+    "es": {"hook": "Alguien le va a chocar en la Woodruff. Y le van a decir que fue su culpa.", "say": "Tres cámaras. Adelante, adentro y atrás. Monitor de estacionamiento, y guarda el video en cuanto siente un golpe. Trae memoria de treinta y dos gigas.", "chips": ["ADELANTE + ADENTRO + ATRÁS", "MONITOR DE ESTACIONAMIENTO", "MEMORIA DE 32GB"]}
+  },
+  "digital-hud-speedometer-plug-and-play-head-up-display": {
+    "en": {"hook": "Eyes up. Speed right there.", "say": "A heads up display that puts your speed in your line of sight. Plug it in and go.", "chips": ["HEADS UP DISPLAY", "PLUG AND PLAY", "EYES ON THE ROAD"]},
+    "es": {"hook": "La vista arriba. La velocidad ahí mismo.", "say": "Una pantalla que pone su velocidad frente a sus ojos. La conecta y listo.", "chips": ["PANTALLA HUD", "CONECTAR Y LISTO", "VISTA EN LA CALLE"]}
+  },
+  "usb-heated-winter-scarf-unisex-neck-warmer": {
+    "en": {"hook": "A scarf that heats itself.", "say": "A USB heated scarf with three heat settings, up to about a hundred forty degrees. Plug it into a power bank and you're warm.", "chips": ["3 HEAT SETTINGS", "USB POWERED", "SOFT FAUX WOOL"]},
+    "es": {"hook": "Una bufanda que se calienta sola.", "say": "Bufanda con calefacción por USB y tres niveles de calor. La conecta a una batería portátil y listo.", "chips": ["3 NIVELES DE CALOR", "USB", "LANA SINTÉTICA SUAVE"]}
+  },
+  "travel-makeup-bag-with-rechargeable-led-mirror": {
+    "en": {"hook": "Good lighting. Anywhere.", "say": "A travel makeup bag with a rechargeable LED mirror built in. Three light colors, and it dims.", "chips": ["LED MIRROR", "3 LIGHT COLORS", "RECHARGEABLE"]},
+    "es": {"hook": "Buena luz. En cualquier lugar.", "say": "Bolsa de maquillaje de viaje con espejo LED recargable. Tres tonos de luz, y se puede atenuar.", "chips": ["ESPEJO LED", "3 TONOS DE LUZ", "RECARGABLE"]}
+  },
+  "rechargeable-led-makeup-mirror-with-3-light-colors": {
+    "en": {"hook": "Your bathroom lighting is lying to you.", "say": "A rechargeable LED makeup mirror. Three light colors, touch dimming, and it goes where you go.", "chips": ["3 LIGHT COLORS", "TOUCH DIMMING", "USB RECHARGEABLE"]},
+    "es": {"hook": "La luz de su baño le está mintiendo.", "say": "Espejo de maquillaje LED recargable. Tres tonos de luz, se atenúa con un toque y va a donde usted vaya.", "chips": ["3 TONOS DE LUZ", "ATENUADOR TÁCTIL", "RECARGABLE POR USB"]}
+  },
+  "slim-portable-car-jump-starter-and-20000mah-power-bank": {
+    "en": {"hook": "Dead battery. No stranger needed.", "say": "A slim jump starter that doubles as a twenty thousand milliamp power bank. Keep it in the car and stop hoping someone has cables.", "chips": ["JUMP STARTER", "20000mAh POWER BANK", "SLIM DESIGN"]},
+    "es": {"hook": "Batería muerta. Sin pedirle a nadie.", "say": "Arrancador de batería delgado que también es batería portátil de veinte mil miliamperios. Déjelo en el carro y olvídese de los cables.", "chips": ["ARRANCADOR", "BATERÍA DE 20000mAh", "DISEÑO DELGADO"]}
+  },
+  "rgb-car-interior-led-light-kit-with-app-and-music-sync": {
+    "en": {"hook": "Your car at night, upgraded.", "say": "Interior LED strips you control from your phone. Sixteen modes, and they sync to your music.", "chips": ["APP CONTROL", "MUSIC SYNC", "16 MODES"]},
+    "es": {"hook": "Su carro de noche, a otro nivel.", "say": "Luces LED para el interior que controla desde el celular. Dieciséis modos, y siguen el ritmo de su música.", "chips": ["CONTROL POR APP", "SIGUE LA MÚSICA", "16 MODOS"]}
+  },
+  "wireless-charging-car-phone-mount-auto-clamping": {
+    "en": {"hook": "Drop the phone in. It grabs it and charges it.", "say": "A wireless charging mount that clamps your phone automatically. Works with any Qi phone.", "chips": ["AUTO CLAMP", "WIRELESS CHARGING", "ANY Qi PHONE"]},
+    "es": {"hook": "Pone el celular. Lo agarra y lo carga.", "say": "Soporte con carga inalámbrica que sujeta su celular solo. Funciona con cualquier celular Qi.", "chips": ["SUJECIÓN AUTOMÁTICA", "CARGA INALÁMBRICA", "CELULARES Qi"]}
+  },
+  "touch-bedside-lamp-with-clock-and-wireless-charger": {
+    "en": {"hook": "Three things off your nightstand. One thing on it.", "say": "A touch lamp, a clock and a ten watt wireless charger in one. Tap to change the light. Hold to dim.", "chips": ["TOUCH LAMP", "CLOCK", "10W WIRELESS CHARGER"]},
+    "es": {"hook": "Tres cosas menos en su mesita. Una sola.", "say": "Lámpara táctil, reloj y cargador inalámbrico de diez vatios en uno. Toque para cambiar la luz. Mantenga para atenuar.", "chips": ["LÁMPARA TÁCTIL", "RELOJ", "CARGADOR DE 10W"]}
+  },
+  "cordless-tire-inflator-with-digital-pressure-gauge": {
+    "en": {"hook": "Low tire. Fixed in the driveway.", "say": "A cordless tire inflator with a digital pressure gauge. Cars, bikes, and no gas station air machine.", "chips": ["CORDLESS", "DIGITAL GAUGE", "CAR + BIKE"]},
+    "es": {"hook": "Llanta baja. Arreglada en la entrada de su casa.", "say": "Inflador de llantas inalámbrico con medidor digital. Para carro y bicicleta, sin ir a la gasolinera.", "chips": ["INALÁMBRICO", "MEDIDOR DIGITAL", "CARRO + BICI"]}
+  },
+  "mini-massage-gun-deep-tissue-6-speeds-5-heads": {
+    "en": {"hook": "Deep tissue. Pocket size.", "say": "A mini massage gun with six speeds and five heads, and a battery that lasts. Gym bag, desk, couch.", "chips": ["6 SPEEDS", "5 HEADS", "MINI SIZE"]},
+    "es": {"hook": "Masaje profundo. Tamaño de bolsillo.", "say": "Pistola de masaje mini con seis velocidades y cinco cabezales, y una batería que dura. Para el gym, la oficina o el sofá.", "chips": ["6 VELOCIDADES", "5 CABEZALES", "TAMAÑO MINI"]}
+  },
+  "rechargeable-hand-warmer-and-5000mah-power-bank": {
+    "en": {"hook": "Cold hands. Dead phone. Fixed both.", "say": "A rechargeable hand warmer that's also a five thousand milliamp power bank. Three heat levels, warm in seconds.", "chips": ["3 HEAT LEVELS", "5000mAh POWER BANK", "POCKET SIZE"]},
+    "es": {"hook": "Manos frías. Celular muerto. Resuelto.", "say": "Calentador de manos recargable que también es batería portátil de cinco mil miliamperios. Tres niveles de calor, calienta en segundos.", "chips": ["3 NIVELES DE CALOR", "BATERÍA DE 5000mAh", "DE BOLSILLO"]}
+  },
+  "magnetic-wireless-power-bank-for-iphone": {
+    "en": {"hook": "Snaps on. Charges. Done.", "say": "A magnetic wireless power bank. It snaps to the back of your iPhone and charges with no cable.", "chips": ["MAGNETIC", "WIRELESS", "NO CABLE"]},
+    "es": {"hook": "Se pega. Carga. Listo.", "say": "Batería portátil magnética e inalámbrica. Se pega atrás de su iPhone y carga sin cable.", "chips": ["MAGNÉTICA", "INALÁMBRICA", "SIN CABLE"]}
+  },
+  "1000w-foldable-handheld-garment-steamer": {
+    "en": {"hook": "Wrinkles gone. No ironing board.", "say": "A foldable thousand watt handheld steamer. Steam in about twenty seconds, and it packs small for travel.", "chips": ["1000W", "STEAM IN 20 SEC", "FOLDABLE"]},
+    "es": {"hook": "Sin arrugas. Sin tabla de planchar.", "say": "Vaporizador de mano plegable de mil vatios. Echa vapor en unos veinte segundos y cabe en la maleta.", "chips": ["1000W", "VAPOR EN 20 SEG", "PLEGABLE"]}
+  },
+  "cordless-mini-vacuum-for-car-and-home-29000pa-strong-suction": {
+    "en": {"hook": "Crumbs in the car. Not after today.", "say": "A cordless mini vacuum with twenty nine thousand pascal suction. Car seats, couch, keyboard.", "chips": ["CORDLESS", "29000Pa SUCTION", "CAR + HOME"]},
+    "es": {"hook": "Migajas en el carro. Hoy se acaban.", "say": "Aspiradora mini inalámbrica con veintinueve mil pascales de succión. Asientos, sofá, teclado.", "chips": ["INALÁMBRICA", "SUCCIÓN 29000Pa", "CARRO + CASA"]}
+  }
+}
