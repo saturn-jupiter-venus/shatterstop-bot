@@ -33,7 +33,7 @@ jobs:
           if [ "$H" -lt 15 ]; then echo "SLOT=0" >> $GITHUB_ENV; elif [ "$H" -lt 21 ]; then echo "SLOT=1" >> $GITHUB_ENV; else echo "SLOT=2" >> $GITHUB_ENV; fi
       - name: Render
         env:
-          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL || vars.MAKE_WEBHOOK_URL }}
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
         run: |
@@ -42,7 +42,7 @@ jobs:
         if: github.event.inputs.dry_run != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
+          MAKE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL || vars.MAKE_WEBHOOK_URL }}
         run: |
           [ -z "$MAKE_WEBHOOK_URL" ] && { echo "No MAKE_WEBHOOK_URL set, skipping"; exit 0; }
           gh release view videos >/dev/null 2>&1 || gh release create videos --title "Bot videos" --notes "Videos made by the ShatterStop bot"
